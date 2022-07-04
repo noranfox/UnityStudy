@@ -21,6 +21,26 @@ public class playerball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKey(KeyCode.UpArrow) == true)
+        {
+            playerRi.AddForce(0f, 0f, speed / 50);
+        }
+
+        if (Input.GetKey(KeyCode.DownArrow) == true)
+        {
+            playerRi.AddForce(0f, 0f, -speed / 50);
+        }
+
+        if (Input.GetKey(KeyCode.RightArrow) == true)
+        {
+            playerRi.AddForce(speed / 50, 0f, 0f);
+        }
+
+        if (Input.GetKey(KeyCode.LeftArrow) == true)
+        {
+            playerRi.AddForce(-speed / 50, 0f, 0f );
+        }
+
 
     }
 
@@ -28,7 +48,7 @@ public class playerball : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("wall"))
         {
-            Vector3 currPos = collision.transform.position;
+            Vector3 currPos = transform.position;
             Vector3 incomVec = currPos - startPos; //입사각
             Vector3 normalVec = collision.contacts[0].normal; //수직벡터
             Vector3 reflectVec = Vector3.Reflect(incomVec, normalVec); //반사각
