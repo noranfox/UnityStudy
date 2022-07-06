@@ -19,9 +19,9 @@ public class ShellController : MonoBehaviour
     public void OnCollisionEnter(Collision coll)
     {
         ParticleSystem fire = Instantiate(shellExplosion,transform.position,transform.rotation);
-        fire.Play(); //  ÀÌÆÑÆ®Àç»ý
+        fire.Play(); //  ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½
         Destroy(gameObject);
-        //Destroy(fire.gameObject);
+        Destroy(fire.gameObject,3f);
         
         if(coll.collider.tag == "Enemy")
         {

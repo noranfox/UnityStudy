@@ -8,7 +8,8 @@ public class GomController : MonoBehaviour
     public Transform fireTransform;
     public float ShootSpeed;
     public int playerNum = 1;
-    public float remonster = 1.0f;
+    private float remonster = 1.0f;
+    public float createmonster = 100;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,12 +25,12 @@ public class GomController : MonoBehaviour
     {
         remonster++;
 
-        if (remonster == 100)
+        if (remonster == createmonster)
         {
             Rigidbody GomInstance =
             Instantiate(mog, fireTransform.position, fireTransform.rotation) as Rigidbody;
 
-            //Æ÷Åº¹ß»ç
+            //ï¿½ï¿½Åºï¿½ß»ï¿½
             GomInstance.velocity = ShootSpeed * fireTransform.forward;
             remonster = 0;
         }

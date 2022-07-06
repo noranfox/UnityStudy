@@ -33,7 +33,7 @@ public class Target1 : MonoBehaviour
             
             Fired.Play();
             Destroy(gameObject);
-           // Destroy(Fired.gameObject);
+            Destroy(Fired.gameObject,3.0f);
         }
        
     }
