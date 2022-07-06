@@ -30,7 +30,6 @@ public class scorescript : MonoBehaviour
     public void IncScore()
     {
         score.text = (int.Parse(score.text) + count).ToString() ;
-        
     }
     public void IncScore1()
     {

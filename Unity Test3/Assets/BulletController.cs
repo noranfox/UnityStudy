@@ -5,6 +5,8 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
     public float speed = 10.0f;
+    GameObject player;
+
 
 
     // Start is called before the first frame update
@@ -18,12 +20,24 @@ public class BulletController : MonoBehaviour
     {
        
     }
-    public void Shoot()
+    public void Shoottotarget()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, speed));
+            gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, speed*2));
         }
+
+    }
+    public void ShoottoPlayer()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            player = GameObject.Find("Player");
+
+            Vector3 dir = player.transform.position - this.transform.position;
+            GetComponent<Rigidbody>().AddForce(dir * speed /10);
+        }
+
     }
     public void OnCollisionEnter(Collision coll)
     {
