@@ -59,3 +59,17 @@ The following packages were added:
   com.unity.postprocessing@2.3.0
   com.unity.purchasing@3.2.2
   com.unity.xr.legacyinputhelpers@2.1.7
+
+=== Thu Jul  7 15:15:53 2022
+
+Packages were changed.
+Update Mode: updateDependencies
+
+The following packages were updated:
+  com.unity.ads from version 3.7.1 to 3.7.5
+  com.unity.analytics from version 3.5.3 to 3.6.12
+  com.unity.postprocessing from version 2.3.0 to 3.2.2
+  com.unity.purchasing from version 3.2.2 to 4.1.5
+  com.unity.xr.legacyinputhelpers from version 2.1.7 to 2.1.9
+The following packages were removed:
+  com.unity.multiplayer-hlapi@1.0.2

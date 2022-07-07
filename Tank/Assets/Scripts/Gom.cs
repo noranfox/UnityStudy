@@ -11,33 +11,27 @@ public class Gom : MonoBehaviour
     public ParticleSystem tankExplosion;
     private float timer = 1.0f;
     public float MonsterTurn = 100;
-
+    GameObject target;
+    public float chase = 1.0f;
+    
     // S
     // tart is called before the first frame update
     void Start()
     {
-        
-    }
-    IEnumerator MoveObject()
-    {
-        timer++;
-        GomRi = GetComponent<Rigidbody>();
-        while(timer == MonsterTurn )
-        {
-            float pop1 =  Random.Range(-50.0f, 50.0f); 
-            float pop2 = Random.Range(-50.0f, 50.0f);
-            float pop3 = Random.Range(-50.0f, 50.0f);
-            
-            yield return new WaitForSeconds(2);
-            GomRi.velocity = new Vector3(pop1,0f,pop3);
-            timer =0;
-        }
+        target = GameObject.Find("Tank");
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        StartCoroutine(MoveObject());
+        timer++;
+        if (timer > MonsterTurn)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, chase);
+            timer = 0;
+        }
+
     }
 
 
