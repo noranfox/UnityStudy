@@ -26,4 +26,17 @@ public class Test : MonoBehaviour
         Coin.AddTorque(0,1,0);
         //transform.Traslate(vec * speed);
     }
+
+    private void OnTriggerStay(Collider other) //대상물인 cube에서 미리 Collider에서 triger를 켜준다.
+    {
+        if(other.name == "Cube")
+        {
+            Coin.AddForce(Vector3.up * 2, ForceMode.Impulse);
+        }
+    }
+
+    public void Jump()
+    {
+        Coin.AddForce(Vector3.up*20, ForceMode.Impulse);
+    }
 }
