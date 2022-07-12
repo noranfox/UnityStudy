@@ -78,5 +78,12 @@ public class _3_BaseImformations : MonoBehaviour
                     break;
                 }
         } */
+
+        // 월드 좌표를 기준으로할지 로컬좌표를 기준으로할지
+       // transform.Rotate(Vector3.up * rs * Time.deltaTime, Space.World); ->월드좌표를기준, 
+       // World대신 Self를넣으면 로컬좌표를 기준으로하게된다.
+
+        //awake 는 start전에 모든변수를 초기화 시켜주기위해 사용한다. 따라서  start말고 awke에서 초기화 시키는게 조핟
+        //start는 다른 오르젝트에서 정보를 받아오거나 할때 사용하는게 유용하다.
     }
 }
