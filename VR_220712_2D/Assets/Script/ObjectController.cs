@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ObjectController : MonoBehaviour
 {
+    public Fish fish;
     public float speed = 0.1f;
     // Start is called before the first frame update
     void Start()
@@ -15,11 +16,12 @@ public class ObjectController : MonoBehaviour
     void Update()
     {
         transform.Translate(new Vector3(-1f* speed, 0f));
+        destory();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void destory()
     {
-        if(collision.gameObject.tag == "reset")
+        if(transform.position.x < -11.5)
         {
             Destroy(gameObject);
         }

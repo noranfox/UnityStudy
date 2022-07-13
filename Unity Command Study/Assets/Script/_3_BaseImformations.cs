@@ -79,11 +79,42 @@ public class _3_BaseImformations : MonoBehaviour
                 }
         } */
 
-        // 월드 좌표를 기준으로할지 로컬좌표를 기준으로할지
-       // transform.Rotate(Vector3.up * rs * Time.deltaTime, Space.World); ->월드좌표를기준, 
-       // World대신 Self를넣으면 로컬좌표를 기준으로하게된다.
+// 월드 좌표를 기준으로할지 로컬좌표를 기준으로할지
+// transform.Rotate(Vector3.up * rs * Time.deltaTime, Space.World); ->월드좌표를기준, 
+// World대신 Self를넣으면 로컬좌표를 기준으로하게된다.
 
-        //awake 는 start전에 모든변수를 초기화 시켜주기위해 사용한다. 따라서  start말고 awke에서 초기화 시키는게 조핟
-        //start는 다른 오르젝트에서 정보를 받아오거나 할때 사용하는게 유용하다.
+//awake 는 start전에 모든변수를 초기화 시켜주기위해 사용한다. 따라서  start말고 awke에서 초기화 시키는게 조핟
+//start는 다른 오르젝트에서 정보를 받아오거나 할때 사용하는게 유용하다.
+
+//invokerepeat 의 경우 오브젝트가 파괴되도 계속 실행되지만 startcoroutine의 경우, 오브젝트가 비활성화시 비활성화 된다.
+// InvokeRepeating("CreateObjects", 1, 2); => 1초후에 2초마다 반복하라
+//
+
+/*void Start()
+{
+    StartCoroutine(MoveObject());
+}
+
+IEnumerator MoveObject()
+{
+    delta++;
+    BombRD = GetComponent<Rigidbody>();
+    while (true)
+    {
+        GameObject bomb = Instantiate(bombPrefep);
+        int pop1 = Random.Range(-8, 9);
+        bomb.transform.position = new Vector3(pop1, 4.0f, 0f);
+        yield return new WaitForSeconds(1);
+
+        delta = 0.0f;
     }
+}/*
+
+        //[hideInInspector] 를 사용하면 public일지라도 감춰진다. 단 선언된 바로 아래줄만 적용됨.
+        //[Serializefield]  Unity inspector에서 캡슐화를 유지하면서 값을 변경할수 있도록 만드는 키워드. 그냥 public쓰면된다.
+        //using System을 해주고  [Serializable] 를 쓰면 바로 밑 private클래스에 있는 모든 inspector를 끄집어낸다.
+        // DontDestoryOnLoad ==> 씬작동중에는 파괴하지말것.
+}
+
+
 }

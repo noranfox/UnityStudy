@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Fish : MonoBehaviour
 {
@@ -10,11 +11,15 @@ public class Fish : MonoBehaviour
     public float fj = 3f;
     public int count = 0;
     public GameManager manager;
+    public AudioSource dieAudio;
+    public AudioSource getpoint;
+    
 
     // Start is called before the first frame update
     private void Awake()
     {
         fish = GetComponent<Rigidbody2D>();
+       
     }
     void Start()
     {
@@ -27,7 +32,7 @@ public class Fish : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) )
         {
             jump();
         }
@@ -42,17 +47,20 @@ public class Fish : MonoBehaviour
 
     }
 
-     void OnTriggerEnter2D(Collider2D coll)
+    void OnTriggerEnter2D(Collider2D coll)
     {
-        if(coll.name.Contains("pipe"))
+        if(coll.gameObject.name.Contains("pipe"))
         {
-            SceneManager.LoadScene("SampleScene");
+            
+            manager.gameOver();
+            dieAudio.Play();
         }
         if(coll.gameObject.tag == "point")
         {
+            
             Destroy(coll);
             manager.score += 10;
-            
+            getpoint.Play();
         }
     }
 
