@@ -6,7 +6,7 @@ using UnityEngine;
 //  게임로직과 해체 사이 오브젝트 비활성화가존재 OnDisable
  public class 기본싸이클 : MonoBehaviour
 {
-    void Awake()
+   /* void Awake()
     {
         Debug.Log("플레이어 데이타가 준비되었습니다");
     }
@@ -53,5 +53,5 @@ using UnityEngine;
 
     }
 
-
+    */
 }
