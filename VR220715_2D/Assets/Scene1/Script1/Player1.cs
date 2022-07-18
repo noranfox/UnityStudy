@@ -22,6 +22,7 @@ public class Player1 : MonoBehaviour
     public bool isHit = false;
     public bool[] joyControl;
     public bool isControl;
+    public ObjectManager objmanager;
 
     // Start is called before the first frame update
     void Awake()
@@ -52,9 +53,16 @@ public class Player1 : MonoBehaviour
             return; 
         }
 
-        GameObject bullet = Instantiate(goBullet, transform.position, Quaternion.identity);
+        //GameObject bullet = Instantiate(goBullet, transform.position, Quaternion.identity);
+        GameObject bullet = objmanager.MakeObject("PlayerBullet");
+        bullet.transform.position = transform.position;
+
         Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
+        //GameManager objmanager1 = bullet.GetComponent<GameManager>();
+
         rigid.AddForce(Vector2.up * 10, ForceMode2D.Impulse);
+
+       // objmanager1.objmanager = objmanager;
         curBulletDelay = 0;
     }
 
@@ -152,14 +160,14 @@ public class Player1 : MonoBehaviour
 
             gameObject.SetActive(false);
             life--;
-
             
-  
-            Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
+            collision.gameObject.transform.position = gameManager.goEnemy.transform.position;
            
             if (life == 0)
             {
-                //gameover();
+                Time.timeScale = 0;
+                gameManager.GameOver();
             }
             else
             {

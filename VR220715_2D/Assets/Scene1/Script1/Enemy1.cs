@@ -17,6 +17,10 @@ public class Enemy1 : MonoBehaviour
     public float maxBulletDelay;
     public GameObject goBullet;
     public GameObject goPlayer;
+    public GameManager manager;
+    public ObjectManager objmanager;
+   
+
 
     void Awake()
     {
@@ -38,7 +42,10 @@ public class Enemy1 : MonoBehaviour
     {
         if(curBulletDelay < maxBulletDelay)
         { return; }
-        GameObject createBullet = Instantiate(goBullet, transform.position, Quaternion.identity);
+        //GameObject createBullet = Instantiate(goBullet, transform.position, Quaternion.identity);
+        GameObject createBullet = objmanager.MakeObject("EnemyBullet");
+        createBullet.transform.position = transform.position;
+
         Rigidbody2D rd = createBullet.GetComponent<Rigidbody2D>();
 
         Vector3 dirVec = goPlayer.transform.position - transform.position;
@@ -57,14 +64,18 @@ public class Enemy1 : MonoBehaviour
     {
         if (collision.gameObject.tag == "Border")
         {
-            Destroy(gameObject);
+            //int randPoint = Random.Range(0, 3);
+            gameObject.SetActive(false);
+           // gameObject.transform.position = manager.spawnPoints[randPoint].position;
+
         }
    
         else if (collision.gameObject.tag == "PlayerBullet" ) 
         {
             Bullet1 bullet = collision.gameObject.GetComponent<Bullet1>();
             OnHit(bullet.power);
-            Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
+            collision.gameObject.transform.position = goPlayer.transform.position;
         }
     }
   
@@ -83,8 +94,13 @@ public class Enemy1 : MonoBehaviour
 
         if (healt <= 0)
         {
-            Destroy(gameObject);
+            //int randPoint = Random.Range(0, 3);
+            gameObject.SetActive(false);
+            //gameObject.transform.position = manager.spawnPoints[randPoint].position;
         }
     }
-
+    private void OnEnable()
+    {
+        healt = 3;
+    }
 }
