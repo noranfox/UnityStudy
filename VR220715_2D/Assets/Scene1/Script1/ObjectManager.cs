@@ -6,8 +6,11 @@ public class ObjectManager : MonoBehaviour
 {
 
 
-    GameObject[] goEnemies;
-    public GameObject enemyPrefab;
+    GameObject[] goEnemiesA;
+    public GameObject AenemyPrefab;
+
+    GameObject[] goEnemiesB;
+    public GameObject BenemyPrefab;
 
     GameObject[] goBulletPlayer;
     public GameObject bulletPlayer;
@@ -22,7 +25,8 @@ public class ObjectManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        goEnemies = new GameObject[10];
+        goEnemiesA = new GameObject[10];
+        goEnemiesB = new GameObject[10];
         goBulletEnemy = new GameObject[100];
         goBulletPlayer = new GameObject[100];
         Generate();
@@ -30,12 +34,17 @@ public class ObjectManager : MonoBehaviour
 
     void Generate()
     {
-        for(int i = 0; i < goEnemies.Length; i++)
+        for(int i = 0; i < goEnemiesA.Length; i++)
         {
-            goEnemies[i] = Instantiate(enemyPrefab);
-            goEnemies[i].SetActive(false);
+            goEnemiesA[i] = Instantiate(AenemyPrefab);
+            goEnemiesA[i].SetActive(false);
         }
-        for(int i = 0; i < goBulletEnemy.Length; i++)
+        for (int i = 0; i < goEnemiesB.Length; i++)
+        {
+            goEnemiesB[i] = Instantiate(BenemyPrefab);
+            goEnemiesB[i].SetActive(false);
+        }
+        for (int i = 0; i < goBulletEnemy.Length; i++)
         {
             goBulletEnemy[i] = Instantiate(bulletEnemy);
             goBulletEnemy[i].SetActive(false);
@@ -50,9 +59,14 @@ public class ObjectManager : MonoBehaviour
     {
         switch (objtype)
         {
-            case "Enemy":
+            case "A":
                 {
-                    goTargetPool = goEnemies;
+                    goTargetPool = goEnemiesA;
+                }
+                break;
+            case "B":
+                {
+                    goTargetPool = goEnemiesB;
                 }
                 break;
             case "EnemyBullet":

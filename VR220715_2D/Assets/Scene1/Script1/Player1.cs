@@ -77,23 +77,23 @@ public class Player1 : MonoBehaviour
         float v = Input.GetAxisRaw("Vertical");
         //anim.SetInteger("input", (int)h);
 
-        if (joyControl[0]) { h = -1; v = 1; }
-        if (joyControl[1]) { h = 0; v = 1; }
-        if (joyControl[2]) { h = 1; v = 1; }
-        if (joyControl[3]) { h = -1; v = 0; }
-        if (joyControl[4]) { h = 0; v = 0; }
-        if (joyControl[5]) { h = 1; v = 0; }
-        if (joyControl[6]) { h = -1; v = -1; }
-        if (joyControl[7]) { h = 0; v = -1; }
-        if (joyControl[8]) { h = 1; v = -1; }
+        if (joyControl[0]) { h = -1; v = 1; anim.SetInteger("input",-1); }
+        if (joyControl[1]) { h = 0; v = 1; anim.SetInteger("input", 0); }
+        if (joyControl[2]) { h = 1; v = 1; anim.SetInteger("input", 1); }
+        if (joyControl[3]) { h = -1; v = 0; anim.SetInteger("input", -1); }
+        if (joyControl[4]) { h = 0; v = 0; anim.SetInteger("input", 0); }
+        if (joyControl[5]) { h = 1; v = 0; anim.SetInteger("input", 1); }
+        if (joyControl[6]) { h = -1; v = -1; anim.SetInteger("input", -1); }
+        if (joyControl[7]) { h = 0; v = -1; anim.SetInteger("input", 0); }
+        if (joyControl[8]) { h = 1; v = -1; anim.SetInteger("input", 1); }
 
         if (isTouchRight && h == -1 || isTouchLeft && h == 1 || !isControl)
         {
-            h = 0;
+            h = 0; anim.SetInteger("input", 0);
         }
         if (isTouchTop && v == 1 || isTouchBottom && v == -1 || !isControl)
         {
-            v = 0;
+            v = 0; 
         }
 
         Vector3 curPos = transform.position;

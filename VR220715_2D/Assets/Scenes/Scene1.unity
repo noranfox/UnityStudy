@@ -668,7 +668,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 227bc5dad69e3bc4bb85b97fc857c3c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 2389919662529089691, guid: da5a8f3d084ce994f8ca7ecc78a46039, type: 3}
+  AenemyPrefab: {fileID: 2389919662529089691, guid: da5a8f3d084ce994f8ca7ecc78a46039, type: 3}
+  BenemyPrefab: {fileID: 8186339715124155544, guid: e8ce7a833f441924d848a3395bca1f1c, type: 3}
   bulletPlayer: {fileID: 2933670283104869000, guid: 78d058b0b0ab987439958f049ff1b19a, type: 3}
   bulletEnemy: {fileID: 8197803592011302062, guid: 6ab32c87ade4d3b40931840d98c967a2, type: 3}
 --- !u!4 &254555646
@@ -822,9 +823,8 @@ MonoBehaviour:
   - {fileID: 2100368476}
   randEnemyType: []
   goEnemy: {fileID: 2389919662529089691, guid: da5a8f3d084ce994f8ca7ecc78a46039, type: 3}
-  goEnemy2: {fileID: 0}
+  goEnemy2: {fileID: 8186339715124155544, guid: e8ce7a833f441924d848a3395bca1f1c, type: 3}
   curEnemySpawnDelay: 0
-  maxEnemySpawnTime: 0.2
   goPlayer: {fileID: 1684255873}
   imglifes:
   - {fileID: 129993232}
@@ -833,6 +833,12 @@ MonoBehaviour:
   goScoretext: {fileID: 1836594068}
   goGameOver: {fileID: 1983351287}
   objmanager: {fileID: 254555645}
+  enemyNames:
+  - A
+  - B
+  spawnIdx: 0
+  spawnEnd: 0
+  nextEnemySpawnDelay: 0
 --- !u!4 &388044641
 Transform:
   m_ObjectHideFlags: 0

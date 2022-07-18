@@ -50,7 +50,7 @@ public class Enemy1 : MonoBehaviour
 
         Vector3 dirVec = goPlayer.transform.position - transform.position;
         rd.AddForce(dirVec.normalized * 1, ForceMode2D.Impulse);
-        //transform.position = Vector2.MoveTowards()
+      
         curBulletDelay = 0;
     }
 
@@ -64,9 +64,9 @@ public class Enemy1 : MonoBehaviour
     {
         if (collision.gameObject.tag == "Border")
         {
-            //int randPoint = Random.Range(0, 3);
+            int randPoint = Random.Range(0, 3);
             gameObject.SetActive(false);
-           // gameObject.transform.position = manager.spawnPoints[randPoint].position;
+
 
         }
    
@@ -75,7 +75,7 @@ public class Enemy1 : MonoBehaviour
             Bullet1 bullet = collision.gameObject.GetComponent<Bullet1>();
             OnHit(bullet.power);
             collision.gameObject.SetActive(false);
-            collision.gameObject.transform.position = goPlayer.transform.position;
+
         }
     }
   
@@ -94,9 +94,9 @@ public class Enemy1 : MonoBehaviour
 
         if (healt <= 0)
         {
-            //int randPoint = Random.Range(0, 3);
+
             gameObject.SetActive(false);
-            //gameObject.transform.position = manager.spawnPoints[randPoint].position;
+
         }
     }
     private void OnEnable()
