@@ -121,7 +121,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  healt: 1
+  healt: 10
+  enemyscore: 1
+  destorypoint: 10
   sprites:
   - {fileID: 308631021, guid: 71caae619065dc2488a22b2960a9f944, type: 3}
   - {fileID: 1253653990, guid: 71caae619065dc2488a22b2960a9f944, type: 3}

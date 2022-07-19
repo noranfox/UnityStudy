@@ -13,6 +13,8 @@ public class Player1 : MonoBehaviour
     public bool isTouchRight = false;
     public bool isTouchLeft = false;
     Animator anim;
+    
+    public int score;
 
     public GameObject goBullet;
     public float curBulletDelay = 0;

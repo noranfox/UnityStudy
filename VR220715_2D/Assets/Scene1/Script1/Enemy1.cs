@@ -8,6 +8,8 @@ public class Enemy1 : MonoBehaviour
     public float speed = 1f ;
     public float healt;
     
+    public int enemyscore = 1;
+    public int destorypoint = 3;
     public Sprite[] sprites;
     SpriteRenderer spriteRenderer;
 
@@ -88,19 +90,21 @@ public class Enemy1 : MonoBehaviour
     {
         healt -= playerBulletPower;
         spriteRenderer.sprite = sprites[1];
-       
+        Player1 playerLogic = goPlayer.GetComponent<Player1>();
+        playerLogic.score += enemyscore;
         
-        Invoke("ReturnSprite", 0.1f);  // startcouroutine À¸·Îµµ °¡´É. 
+        Invoke("ReturnSprite", 0.1f);  // startcouroutine ï¿½ï¿½ï¿½Îµï¿½ ï¿½ï¿½ï¿½ï¿½. 
 
         if (healt <= 0)
         {
 
             gameObject.SetActive(false);
+            playerLogic.score += destorypoint;
 
         }
     }
-    private void OnEnable()
+    /*private void OnEnable()
     {
-        healt = 3;
-    }
+        healt = 1;
+    }*/
 }

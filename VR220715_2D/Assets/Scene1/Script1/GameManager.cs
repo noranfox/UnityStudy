@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject goPlayer;
     public Image[] imglifes;
+  
     public Text goScoretext;
     public GameObject goGameOver;
     public ObjectManager objmanager;
@@ -25,9 +26,9 @@ public class GameManager : MonoBehaviour
 
     public class spawn
     {
-        public float delay;//³ªÅ¸³ª´Â½Ã°£
-        public string tpye;//Àû±âÅ¸ÀÔ
-        public int point;//½ºÆùÆ÷ÀÎÆ® 
+        public float delay;//ï¿½ï¿½Å¸ï¿½ï¿½ï¿½Â½Ã°ï¿½
+        public string tpye;//ï¿½ï¿½ï¿½ï¿½Å¸ï¿½ï¿½
+        public int point;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® 
     };
 
     public int spawnIdx = 0;
@@ -86,7 +87,7 @@ public class GameManager : MonoBehaviour
             curEnemySpawnDelay = 0;
         }
         Player1 playerLogic =goPlayer.GetComponent<Player1>();
-        //goScoretext.text = string.Format("{0:n0}", playerLogic.nscore);
+        goScoretext.text = string.Format("{0:n0}", playerLogic.score);
 
     }
 
@@ -128,7 +129,7 @@ public class GameManager : MonoBehaviour
         nextEnemySpawnDelay = Random.Range(3f, 5f);
        
         enemy.objmanager = objmanager;
-        enemy.goPlayer = goPlayer; //¾îÂ÷ÇÇ ¿©±â¼­ »ý¼ºµÇ¹Ç·Î »ý¼ºµÇ¸é¼­ goPlayer Á¤º¸¸¦ °¡Á®°£´Ù.
+        enemy.goPlayer = goPlayer; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½â¼­ ï¿½ï¿½ï¿½ï¿½ï¿½Ç¹Ç·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç¸é¼­ goPlayer ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 
         spawnIdx++;
         if(spawnIdx == spawnList.Count)
