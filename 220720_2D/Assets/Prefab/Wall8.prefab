@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9155698286423324963}
   - component: {fileID: 3420038197346601307}
   - component: {fileID: 2818401709685690379}
+  - component: {fileID: 2249363028645476485}
   m_Layer: 8
   m_Name: Wall8
   m_TagString: Untagged
@@ -69,7 +70,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1479202821
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -850574018226863787, guid: 28aafa7d73370bf4a9bad43d5fe8c74e,
     type: 3}
@@ -109,3 +110,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.3333334, y: 1.3333334}
   m_EdgeRadius: 0
+--- !u!114 &2249363028645476485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017072601219865721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 630252ef4ab7b4f34b9b6c1a8faf1a48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dmgSprite: {fileID: -7795444107844065276, guid: 28aafa7d73370bf4a9bad43d5fe8c74e,
+    type: 3}
+  hp: 4

@@ -28,13 +28,13 @@ public abstract class MovingObject : MonoBehaviour
         hit = Physics2D.Linecast(start, end, BlockingLayer);
         if( hit.transform == null)
         {
-            StartCoroutine ( SmoothMovement(end));
+            StartCoroutine (SmoothMovement (end));
             return true;
         }
         return false;
     }
 
-    protected IEnumerable SmoothMovement(Vector3 end)
+    protected IEnumerator SmoothMovement(Vector3 end)
     {
         float sqrRemainingDistance = (transform.position - end).sqrMagnitude;
         while (sqrRemainingDistance > float.Epsilon)
@@ -46,7 +46,7 @@ public abstract class MovingObject : MonoBehaviour
         }
     }
 
-    protected virtual void Attempt<T>(int xDir, int yDir)
+    protected virtual void AttemptMove<T>(int xDir, int yDir)
         where T : Component
     {
         RaycastHit2D hit;

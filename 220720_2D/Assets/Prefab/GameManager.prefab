@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6967195faf1905c449a0dfb34554a447, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerFoodPoints: 100
+  playersTurn: 1
 --- !u!114 &4545662146312064572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,8 +89,8 @@ MonoBehaviour:
   - {fileID: 5716601321095125102, guid: 79dc984bf365c044aa2b234f74b51c5b, type: 3}
   - {fileID: 4103073001586988259, guid: e9af36c7553da5c48ac38bd8a68bdba7, type: 3}
   enemyTiles:
-  - {fileID: 2475664967471057657, guid: 6dd7363da3cb5cf42a78d2c13da4d7d3, type: 3}
   - {fileID: 2957412895619127339, guid: 52bb32eebdae2e24d9d10a50a6f7c696, type: 3}
+  - {fileID: 2475664967471057657, guid: 6dd7363da3cb5cf42a78d2c13da4d7d3, type: 3}
   outerWallTiles:
   - {fileID: 5311885001503276983, guid: 3a5cc550b53dec8429287ddb0ebf3697, type: 3}
   - {fileID: 4684410658693848927, guid: 6363c07b7b4c1d649bb0eb0060ca0fdc, type: 3}
