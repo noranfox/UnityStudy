@@ -25,6 +25,7 @@ public class Player1 : MonoBehaviour
     public bool[] joyControl;
     public bool isControl;
     public ObjectManager objmanager;
+    public WeaponManager weaponManager;
 
     // Start is called before the first frame update
     void Awake()
@@ -46,15 +47,24 @@ public class Player1 : MonoBehaviour
 
     void Fire()
     {
-        if(!Input.GetButton("Fire1"))
+        if(Input.GetKeyDown(KeyCode.Alpha1))
         {
-            return;
+            weaponManager.ChangeToBullet2();
         }
+        if(Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            weaponManager.ChangeToBullet3();
+        }
+
+        weaponManager.Fire(gameObject);
+       
+        
         if (curBulletDelay < maxBulletDelay)
         { 
             return; 
         }
-
+        return;
+        /*
         //GameObject bullet = Instantiate(goBullet, transform.position, Quaternion.identity);
         GameObject bullet = objmanager.MakeObject("PlayerBullet");
         bullet.transform.position = transform.position;
@@ -65,7 +75,7 @@ public class Player1 : MonoBehaviour
         rigid.AddForce(Vector2.up * 10, ForceMode2D.Impulse);
 
        // objmanager1.objmanager = objmanager;
-        curBulletDelay = 0;
+        curBulletDelay = 0;*/
     }
 
     void ReloadBullet()
