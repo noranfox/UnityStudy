@@ -36,13 +36,18 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets/Package/TutorialInfo/Scripts/Readme.cs" />
+     <Compile Include="Assets/Package/TutorialInfo/Scripts/TutorialInfo.cs" />
      <Compile Include="Assets/Script/BoardManager.cs" />
      <Compile Include="Assets/Script/Enemy.cs" />
      <Compile Include="Assets/Script/GameManager.cs" />
      <Compile Include="Assets/Script/Loader.cs" />
      <Compile Include="Assets/Script/MovingObject.cs" />
      <Compile Include="Assets/Script/Player.cs" />
+     <Compile Include="Assets/Script/SoundManager.cs" />
      <Compile Include="Assets/Script/Wall.cs" />
+     <None Include="Assets/Package/Fonts/OFL.txt" />
+     <None Include="Assets/Package/TutorialInfo/Fonts/LICENSE.txt" />
     <Reference Include="UnityEngine">
         <HintPath>/Applications/Unity/Hub/Editor/2019.4.40f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

@@ -29,9 +29,12 @@ public abstract class MovingObject : MonoBehaviour
         if( hit.transform == null)
         {
             StartCoroutine (SmoothMovement (end));
+            boxCollider.enabled = true;
             return true;
         }
+        
         return false;
+
     }
 
     protected IEnumerator SmoothMovement(Vector3 end)

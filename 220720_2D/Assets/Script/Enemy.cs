@@ -10,6 +10,9 @@ public class Enemy : MovingObject
     private Transform target;
     private bool skipMove;
 
+    public AudioClip enemyAttack1;
+    public AudioClip enemyAttack2;
+
     protected override void Start()
     {
         GameManager.instance.AddEnemyToList(this);
@@ -36,7 +39,7 @@ public class Enemy : MovingObject
         int yDir = 0;
         if(Mathf.Abs(target.position.x - transform.position.x) < float.Epsilon)
         {
-            yDir = target.position.y > transform.position.y? 1 : -1; 
+            yDir = target.position.y > transform.position.y ? 1 : -1; 
         }
         else
         {
@@ -51,6 +54,9 @@ public class Enemy : MovingObject
         Player hitPlayer =  component as Player;
         animator.SetTrigger("enemyAttack");
         hitPlayer.LossFood(playerDamage);
+        SoundManager.instance.RandomizeSfx(enemyAttack1,enemyAttack2);
+        
+
     }
 
 }
