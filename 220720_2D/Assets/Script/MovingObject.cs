@@ -10,7 +10,7 @@ public abstract class MovingObject : MonoBehaviour
     private BoxCollider2D boxCollider;
     private Rigidbody2D rb2D;
     private float inverseMoveTime;
-
+    public float routine;
 
     protected virtual void Start()
     {
@@ -21,15 +21,18 @@ public abstract class MovingObject : MonoBehaviour
 
     protected bool Move (int xDir, int yDir, out RaycastHit2D hit)
     {
+
         Vector2 start = transform.position;
         Vector2 end = start + new Vector2(xDir, yDir);
 
         boxCollider.enabled = false;
         hit = Physics2D.Linecast(start, end, BlockingLayer);
+        boxCollider.enabled = true;
         if( hit.transform == null)
         {
-            StartCoroutine (SmoothMovement (end));
-            boxCollider.enabled = true;
+            routine = inverseMoveTime * Time.deltaTime;
+            StartCoroutine (SmoothMovement(end));
+            //boxCollider.enabled = true;
             return true;
         }
         
@@ -54,6 +57,7 @@ public abstract class MovingObject : MonoBehaviour
     {
         RaycastHit2D hit;
         bool canMove = Move(xDir, yDir, out hit);
+
         if (hit.transform == null)
             return;
 

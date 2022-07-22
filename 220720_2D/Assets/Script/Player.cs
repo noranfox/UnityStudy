@@ -21,16 +21,21 @@ public class Player : MovingObject
     public AudioClip gameOverSound;
 
 
-    
-
+    private Vector2 touchOrigin = -Vector2.one;
 
     private Animator animator;
     private int food;
     public Text foodText;
 
+    Rigidbody2D rb2;
+    SpriteRenderer spriteRenderer;
+
     protected override void Start()
     {
+        rb2 = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         food = GameManager.instance.playerFoodPoints;
 
@@ -51,16 +56,72 @@ public class Player : MovingObject
         int horizontal = 0;
         int vertical = 0;
 
+   // #if UNITY_STANDALONE || UNITY_WEBPLAYER
+
         horizontal = (int) Input.GetAxisRaw("Horizontal");
         vertical = (int) Input.GetAxisRaw("Vertical");
-        
-        if(horizontal !=0)
+/*
+        if (horizontal != 0)
         {
             vertical = 0;
+            rb2.velocity = Vector2.zero;
+        }
+        else if(vertical != 0 )
+        {
+            horizontal = 0;
+            rb2.velocity = Vector2.zero;
+        }
+        else if (horizontal != 0 && vertical != 0 )
+        {
+            horizontal = 0;
+            vertical = 0;
+            rb2.velocity = Vector2.zero;
+        }
+*/
+  //  #else
+        if(Input.touchCount > 0)
+        {
+            Touch myTouch =Input.touches[0];
+
+            if(myTouch.phase == TouchPhase.Began)
+            {
+                touchOrigin = myTouch.position;
+            }
+            
+            else if(myTouch.phase == TouchPhase.Ended && touchOrigin.x >= 0)
+            {
+                Vector2 touchEnd = myTouch.position;
+                float x = touchEnd.x - touchOrigin.x;
+                float y = touchEnd.y - touchOrigin.y;
+                touchOrigin.x = -1;
+                if(Mathf.Abs(x) > Mathf.Abs(y))
+                {
+                    horizontal = x > 0 ? 1 : -1;
+                }
+                else
+                {
+                    vertical = y > 0? 1: -1;
+                }
+            }
+        }
+   //     #endif
+
+
+
+
+        if (horizontal != 0 || vertical != 0)
+        {
+            if(horizontal == 1)
+            {
+                spriteRenderer.flipX =false;
+            }
+            if(horizontal == -1 )
+            {
+                spriteRenderer.flipX = true;
+            }
+            AttemptMove<Wall>(horizontal, vertical);
         }
 
-        if(horizontal !=0 || vertical != 0)
-            AttemptMove<Wall> (horizontal, vertical);
     }
 
     protected override void AttemptMove <T> (int xDir, int yDir)
@@ -125,10 +186,13 @@ public class Player : MovingObject
     {
         if(food <=0)
         {
-        SoundManager.instance.PlaySingle(gameOverSound);
-        GameManager.instance.GameOver();
-        food = 100;
-        foodText.text = "Food:" + food;
+            SoundManager.instance.PlaySingle(gameOverSound);
+            GameManager.instance.GameOver();
+            Restart();
+            
+            GameManager.instance.Regame();
+            food = 100;
+            foodText.text = "Food:" + food;
         }
     }
 }

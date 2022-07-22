@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public float turnDelay = .1f;
     public static GameManager instance = null;
     private BoardManager boardScript;
-    private int level = 1;
+    public int level = 1;
     private List<Enemy> enemies;
     private bool enemiesMoving;
     private Text levelText;
@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
     }
     void InitGame()
     {
+        
         doingSetup = true;
         levelImage = GameObject.Find("LevelImage");
         levelText = GameObject.Find("LevelText").GetComponent<Text>();
@@ -82,9 +83,16 @@ public class GameManager : MonoBehaviour
         
         levelImage.SetActive(true);
         enabled = false;
-
         
     }
+    public void Regame()
+    {
+        enabled = true;
+        level = 0;
+        playerFoodPoints = 100;
+
+    }
+
 
     IEnumerator MoveEnemies()
     {

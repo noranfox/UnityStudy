@@ -90,6 +90,7 @@ public class BoardManager : MonoBehaviour
             LayoutObjectAtRandom(wallTiles, wallCount.minimum, wallCount.maximum);
             LayoutObjectAtRandom(foodTiles, foodCount.minimum, foodCount.maximum);
             int enemyCount = (int)Mathf.Log(level, 2f);
+            //2제급? = level
             LayoutObjectAtRandom(enemyTiles, enemyCount, enemyCount);
             Instantiate(exit, new Vector3(columns - 1, rows - 1, 0f),Quaternion.identity);
         }
