@@ -60,24 +60,13 @@ public class Player : MovingObject
 
         horizontal = (int) Input.GetAxisRaw("Horizontal");
         vertical = (int) Input.GetAxisRaw("Vertical");
-/*
+
         if (horizontal != 0)
         {
             vertical = 0;
-            rb2.velocity = Vector2.zero;
+            
         }
-        else if(vertical != 0 )
-        {
-            horizontal = 0;
-            rb2.velocity = Vector2.zero;
-        }
-        else if (horizontal != 0 && vertical != 0 )
-        {
-            horizontal = 0;
-            vertical = 0;
-            rb2.velocity = Vector2.zero;
-        }
-*/
+
   //  #else
         if(Input.touchCount > 0)
         {

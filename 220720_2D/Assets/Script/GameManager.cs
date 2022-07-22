@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     private bool doingSetup;
     
     public int playerFoodPoints = 100;
-    [HideInInspector] public bool playersTurn = true;
+    /*[HideInInspector] */public bool playersTurn = true;
 
 
      void Awake()
